@@ -24,7 +24,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/signin', [UserControllerAPI::class, 'signin']);
 Route::post('/login', [UserControllerAPI::class, 'login']);
 
+Route::get('/login', function(){
+	abort(404);
+} )->name('login');
+
+Route::get('/signin', function(){
+	abort(404);
+} );
+
+
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/allPodcasts', [PodcastControllerAPI::class, 'getAll']);
     Route::post('/logout', [UserControllerAPI::class, 'logout']);
+	Route::get('/logout', function(){
+
+abort(404);
+
+} );
+
 });
